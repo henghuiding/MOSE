@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="author" href="https://henghuiding.github.io/MOSE">
+  <title>MOSE: Complex Video Object Segmentation Dataset</title>
+  <meta name="description" content="MOSE: Complex Video Object Segmentation Dataset">
+  <meta name="keywords" content="MOSE; Complex Video Object Segmentation Dataset; MOSE: Complex Video Object Segmentation Dataset; MOSE Dataset; VOS Dataset; Video Object Segmentation; VOS; Video Segmentation; Video Instance Segmentation; Henghui Ding; Nanyang Technological University; Computer Vision">
+  
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="MOSE: Complex Video Object Segmentation Dataset">
+  <meta property="og:title" content="MOSE: Complex Video Object Segmentation Dataset"/>
+  <meta property="og:description" content="MOSE: Complex Video Object Segmentation Dataset"/>
+  <meta property="og:url" content="https://henghuiding.github.io/MOSE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="MOSE: Complex Video Object Segmentation Dataset">
+  <meta name="twitter:description" content="MOSE: Complex Video Object Segmentation Dataset">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="MOSE; Complex Video Object Segmentation Dataset; MOSE: Complex Video Object Segmentation Dataset; MOSE Dataset; VOS Dataset; Video Object Segmentation; VOS; Video Segmentation; Video Instance Segmentation; Henghui Ding; Nanyang Technological University; Computer Vision">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  
+  <link rel="icon" type="image/x-icon" href="static/favicon_io/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="static/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="static/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <meta name="google-site-verification" content="RHqlM-yRssUYgbykhtd0uguPnqkhTvwJw-aLE04B4KQ" />
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://henghuiding.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Challenges
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://pvuw.github.io/">
+            PVUW Workshop
+          </a>
+          <a class="navbar-item" href="https://lsvos.github.io/">
+            LSVOS Workshop
+          </a>
+           <a class="navbar-item" href="https://henghuiding.github.io/MOSE/ChallengeCVPR2024">
+            1st MOSE Challenge on CVPR 2024
+          </a>
+          <a class="navbar-item" href="https://henghuiding.github.io/MeViS/ChallengeCVPR2024">
+            1st MeViS Challenge on CVPR 2024
+          </a>
+          <a class="navbar-item" href="https://henghuiding.github.io/MOSE">
+            MOSE Dataset Page
+          </a>
+          <a class="navbar-item" href="https://henghuiding.github.io/MeViS">
+            MeViS Dataset Page
+          </a>
+          <a class="navbar-item" href="https://henghuiding.github.io/GRES">
+            GRES Dataset Page
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">MOSE: Complex Video Object Segmentation Dataset</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://henghuiding.github.io/" target="_blank">Henghui Ding</a><sup>1</sup>,&nbsp;</span>
+                 <span class="author-block">
+                  <a href="https://github.com/KainingYing" target="_blank">Kaining Ying</a><sup>1</sup>,&nbsp;</span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=XlQP0GIAAAAJ&hl=en" target="_blank">Chang Liu</a><sup>2</sup>,&nbsp;</span>
+                <span class="author-block">
+                  <a href="https://heshuting555.github.io/" target="_blank">Shuting He</a><sup>3</sup>,&nbsp;</span><br>
+                <span class="author-block">
+                  <a href="https://personal.ntu.edu.sg/exdjiang/" target="_blank">Xudong Jiang</a><sup>4</sup>,&nbsp;</span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=f3_FP8AAAAAJ&hl=en" target="_blank">Yu-Gang Jiang</a><sup>1</sup>,&nbsp;</span>
+                <span class="author-block">
+                  <a href="https://torrvision.com/" target="_blank">Philip H.S. Torr</a><sup>5</sup>,&nbsp;</span>
+                <span class="author-block">
+                  <a href="https://songbai.site/" target="_blank">Song Bai</a><sup>2</sup></span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">
+                      <sup>1</sup>Fudan University&nbsp;&nbsp;&nbsp;&nbsp;
+                      <sup>2</sup>ByteDance&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      <sup>3</sup>SUFE&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      <sup>4</sup>Nanyang Technological University&nbsp;&nbsp;&nbsp;&nbsp;
+                      <sup>5</sup>University of Oxford&nbsp;&nbsp;&nbsp;&nbsp;
+                      
+                  </div>
+
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                    <span class="link-block">
+                      <a href="https://www.codabench.org/competitions/10062/" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <img src="static/icon/dataset.png" alt="Dataset Icon" style="width: 16px; height: 16px;" />
+                    </span>
+                      <span>🔥MOSEv2 Dataset</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                      <a href="https://www.codabench.org/competitions/10062/" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/server.png" alt="Eval Server Icon" style="width: 16px; height: 16px;" />
+                      </span>
+                      <span>🔥MOSEv2 Eval Server</span>
+                    </a>
+                  </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2508.05630" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>MOSEv2 Dataset Report</span>
+                </a>
+              </span>
+              <br>
+
+                    <span class="link-block">
+                      <a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Ding_MOSE_A_New_Dataset_for_Video_Object_Segmentation_in_Complex_ICCV_2023_paper.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>ICCV'23 PDF</span>
+                    </a>
+                  </span>
+
+                    <!-- Supplementary PDF link -->
+                    <span class="link-block">
+                      <a href="https://github.com/henghuiding/MOSE-api" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <img src="static/icon/dataset.png" alt="Dataset Icon" style="width: 16px; height: 16px;" />
+                    </span>
+                      <span>MOSEv1 Dataset</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                      <a href="https://codalab.lisn.upsaclay.fr/competitions/10703" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/server.png" alt="Eval Server Icon" style="width: 16px; height: 16px;" />
+                      </span>
+                      <span>MOSEv1 Eval Server</span>
+                    </a>
+                  </span>
+
+                  <!-- Github link -->
+<!--                   <span class="link-block">
+                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span> -->
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://mose.video/MOSEv1/" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    🌐
+                  </span>
+                  <span>MOSEv1 Page</span>
+                </a>
+              </span>
+              <span class="link-block">
+                  <a href="https://arxiv.org/abs/2302.01872" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>MOSEv1 arXiv</span>
+                </a>
+              </span>
+              <br>
+
+              <span class="link-block">
+                      <a href="https://lsvos.github.io/" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+<!--                       <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span> -->
+                      <span>LSVOS Workshop@ICCV</span>
+                    </a>
+                  </span>
+              <span class="link-block">
+                      <a href="https://pvuw.github.io/" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+<!--                       <span class="icon">
+                        <i class="ai ai-cvpr" style="color: #ffcc00;"></i>
+                      </span> -->
+                      <span>PVUW Workshop@CVPR</span>
+                    </a>
+                  </span>
+                  <br>
+
+                🚧 Page under construction
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <center><img src="static/DemoImages/teaserv2.png" border="0" width="100%"></center>
+      <!-- <h2 class="subtitle has-text-centered"> -->
+        <div align="center"><p style="text-align:justify; text-justify:inter-ideograph;width:100%">Figure 1. Examples of video clips from the co<b><font color="#FF6403">M</font></b>plex video <b><font color="#FF6403">O</font></b>bject <b><font color="#FF6403">SE</font></b>gmentation (<b><font color="#FF6403">MOSEv2</font></b>) dataset. The selected target objects are masked in <font color="#FF6403">orange ▇</font>. The most notable features of MOSEv2 include both challenges inherited from <a href="https://mose.video/MOSEv1/" target="_blank">MOSEv1</a> such as disappearance-reappearance of objects (①-⑩), small/inconspicuous objects (①,③,⑥), heavy occlusions, and crowded scenarios (①,②), as well as newly introduced complexities including adverse weather conditions (⑥), low-light environments (⑤-⑦), multi-shots (⑧), camouflaged objects (⑤), non-physical objects like shadows (④), and knowledge dependency (⑨,⑩). The goal of MOSEv2 dataset is to provide a platform that promotes the development of more comprehensive and robust video object segmentation algorithms.</p></div><br> 
+
+        <h2 class="title">News</h2>
+                <HR color=#F0F0F0 width="97%" SIZE=1>
+                <div class="news" style="overflow:auto; height:200px; Width:99%;padding-top: 6px;">
+                <ul>
+                <li>[08, 2025]&nbsp;&nbsp;&nbsp; <font color="#FF6403">MOSEv2 Challenge</font> is hold on <a href="https://lsvos.github.io/" target="_blank">7th LSVOS Workshop@ICCV 2025</a> 🔥 Call for participation.</li>
+                <li>[08, 2025]&nbsp;&nbsp;&nbsp; <font color="#FF6403">MOSEv2 Dataset</font> and <a href="https://www.codabench.org/competitions/10062/" target="_blank">MOSEv2 evaluation server</a> will be online <font color="magenta"><b>before 10th Aug 2025</b></font>.</li>
+                <li>[08, 2025]&nbsp;&nbsp;&nbsp; <font color="magenta"><b>MOSEv2: A More Challenging Dataset for Video Object Segmentation in Complex Scenes</b></font>.</li>
+                <li>[03, 2025]&nbsp;&nbsp;&nbsp; <a href="https://pvuw.github.io/" target="_blank">CVPR 2025 PVUW Workshop</a>.</li>
+                <li>[09, 2024]&nbsp;&nbsp;&nbsp; <a href="https://lsvos.github.io/index_2024.html" target="_blank">6th LSVOS Workshop@ECCV 2024</a>.</li>
+                <li>[06, 2024]&nbsp;&nbsp;&nbsp; CVPR 2024 MOSE & MeViS <a href="https://arxiv.org/abs/2406.17005" target="_blank">Challenge Report</a>.</li>
+                <li>[03, 2024]&nbsp;&nbsp;&nbsp; <a href="https://www.vspwdataset.com/Workshop2024" target="_blank">CVPR 2024 PVUW Workshop</a>.</li>
+                <li>[07, 2023]&nbsp;&nbsp;&nbsp; <font color="#FF6403">MOSE Dataset</font> is accepted to ICCV 2023.</li>
+                <li>[02, 2023]&nbsp;&nbsp;&nbsp; <font color="#FF6403">MOSE Dataset</font> is released. <a href="https://codalab.lisn.upsaclay.fr/competitions/10703" target="_blank">Evaluation server</a> is online.</li>
+                </ul>
+      <!-- </h2> -->
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p style="text-align:justify; text-justify:inter-ideograph;">
+      Video object segmentation (VOS) aims to segment specified target objects throughout a video. Although state-of-the-art methods have achieved impressive performance (e.g., 90+% <i>J&F</i> ) on existing benchmarks such as DAVIS and YouTube-VOS, these datasets primarily contain salient, dominant, and isolated objects, limiting their generalization to real-world scenarios. To advance VOS toward more realistic environments, co<b>M</b>plex video <b>O</b>bject <b>SE</b>gmentation (<b>MOSEv1</b>) was introduced to facilitate VOS research in complex scenes. Building on the strengths and limitations of MOSEv1, we present <b>MOSEv2</b>, a significantly more challenging dataset designed to further advance VOS methods under real-world conditions. MOSEv2 consists of <b>5,024 videos</b> and over 701,976 high-quality masks for 10,074 objects across 200 categories. Compared to its predecessor, MOSEv2 introduces significantly greater scene complexity, including more frequent object disappearance and reappearance, severe occlusions and crowding, smaller objects, as well as a range of new challenges such as adverse weather (e.g., rain, snow, fog), low-light scenes (e.g., nighttime, underwater), multi-shot sequences, camouflaged objects, non-physical targets (e.g., shadows, reflections), scenarios requiring external knowledge, etc. We benchmark 20 representative VOS methods under 5 different settings and observe consistent performance drops. For example, SAM2 drops from 76.4% on MOSEv1 to only <b>50.9%</b> on MOSEv2. We further evaluate 9 video object tracking methods and find similar declines, demonstrating that MOSEv2 presents challenges across tasks. These results highlight that despite high accuracy on existing datasets, current VOS methods still struggle under real-world complexities.
+      <!-- Video object segmentation (VOS) aims at segmenting a particular object throughout the entire video clip sequence. The state-of-the-art VOS methods have achieved excellent performance (<i>e.g.</i>, <b>90+%</b> <i>J&F</i>) on existing datasets. However, since the target objects in these existing datasets are usually relatively salient, dominant, and isolated, VOS under complex scenes has rarely been studied. To revisit VOS and make it more applicable in the real world, we collect a new VOS dataset called co<b>M</b>plex video <b>O</b>bject <b>SE</b>gmentation (<b>MOSE</b>) to study the tracking and segmenting objects in complex environments. MOSE contains <b>2,149</b> video clips and <b>5,200</b> objects from <b>36</b> categories, with <b>431,725</b> high-quality object segmentation masks. The most notable feature of MOSE dataset is complex scenes with crowded and occluded objects. The target objects in the videos are commonly occluded by others and disappear in some frames. To analyze the proposed MOSE dataset, we benchmark 18 existing VOS methods under 4 different settings on the proposed MOSE dataset and conduct comprehensive comparisons. The experiments show that current VOS algorithms cannot well perceive objects in complex scenes. For example, under the semi-supervised VOS setting, the highest <i>J&F</i> by existing state-of-the-art VOS methods is only <b>59.4%</b> on MOSE, much lower than their <b>∼90%</b> <i>J&F</i> performance on DAVIS. The results reveal that although excellent performance has been achieved on existing benchmarks, there are unresolved challenges under complex scenes and more efforts are desired to explore these challenges in the future. -->
+    </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+    </div>
+    <section class="section" id="MOSEv2Visualization">
+    <div class="container is-max-desktop content">
+      <h2 class="title">MOSEv2: A More Challenging Dataset</h2>
+     <center>
+        <img src="static/MOSEv2/6.webp" alt="0442a954" width="224" height="126" />&nbsp;
+        <img src="static/MOSEv2/11.webp" alt="d321dde4" width="224" height="126" />&nbsp;
+        <img src="static/MOSEv2/8.webp" alt="02221fb0" width="224" height="126" />&nbsp;
+        <img src="static/MOSEv2/5.webp" alt="bbe97d18" width="224" height="126" />&nbsp;
+        
+
+        <img src="static/MOSEv2/1.webp" alt="e5e9eb29" width="224" height="126" />&nbsp;
+        <img src="static/MOSEv2/2.webp" alt="002b4dce" width="224" height="126" />&nbsp;
+        <img src="static/MOSEv2/4.webp" alt="26ed56e6" width="224" height="126" />&nbsp;
+        <img src="static/MOSEv2/12.webp" alt="c791ddbb" width="224" height="126" />&nbsp;      
+        
+
+        <img src="static/MOSEv2/9.webp" alt="002b4dce" width="224" height="126" />&nbsp;
+        <img src="static/MOSEv2/10.webp" alt="26ed56e6" width="224" height="126" />&nbsp;
+        <img src="static/MOSEv2/7.webp" alt="c791ddbb" width="224" height="126" />&nbsp;      
+        <img src="static/MOSEv2/3.webp" alt="e5e9eb29" width="224" height="126" />&nbsp;
+
+      </center>
+    </div>
+</section>
+
+    <section class="section" id="Visualization">
+    <div class="container is-max-desktop content">
+      <h2 class="title">MOSEv1 Visualization</h2>
+     <center>
+        <img src="static/DemoImages/webp/0442a954.webp" alt="0442a954" width="224" height="126" />&nbsp;
+        <img src="static/DemoImages/webp/d321dde4.webp" alt="d321dde4" width="224" height="126" />&nbsp;
+        <img src="static/DemoImages/webp/02221fb0.webp" alt="02221fb0" width="224" height="126" />&nbsp;
+        <img src="static/DemoImages/webp/bbe97d18.webp" alt="bbe97d18" width="224" height="126" />&nbsp;
+        
+
+        <img src="static/DemoImages/webp/002b4dce.webp" alt="002b4dce" width="224" height="126" />&nbsp;
+        <img src="static/DemoImages/webp/26ed56e6.webp" alt="26ed56e6" width="224" height="126" />&nbsp;
+        <img src="static/DemoImages/webp/c791ddbb.webp" alt="c791ddbb" width="224" height="126" />&nbsp;      
+        <img src="static/DemoImages/webp/e5e9eb29.webp" alt="e5e9eb29" width="224" height="126" />&nbsp;
+
+      </center>
+    </div>
+</section>
+
+<section class="section" id="DatasetStatistics">
+     <div class="container is-max-desktop content">
+      <h2 class="title">Dataset Statistics</h2>
+      <center><caption><b>TABLE 1. Statistical comparison between MOSEv2 and existing video object segmentation and tracking datasets.</b></caption></center>
+      <center><img src="static/MOSEv2/Table1.png" border="0" width="100%"></center>
+      “Annotations”: number of annotated masks or boxes. “Duration”: the total duration of annotated videos, in minutes by default unless noted. “Disapp. Rate”: the frequency of objects disappearing in at least one frame, while “Reapp. Rate”: the frequency of objects that previously disappeared and later reappear. “Distractors” quantifies scene crowding as the average number of visually similar objects per target in the first frame. *SA-V uses the combination of manual and auto annotations.
+  </div>
+</section>
+
+<section class="section" id="Experiments">
+  <div class="container is-max-desktop content">
+  <h2 class="title">Experiments</h2>
+    <!-- <center> -->
+     We benchmark the state-of-the-art methods to the best of our knowledge, please see the <a href="https://arxiv.org/abs/2508.05630" target="_blank">Dataset Report</a> for details. If your method is more powerful, please feel free to contract us for benchmark evaluation, we will update the results.<br><br>
+
+     <center><caption><b>TABLE 2. Benchmark results of semi-supervised (one-shot) VOS on MOSEv2.</b></caption></center>
+     <center><img src="static/MOSEv2/MOSEv2Results.png" border="0" width="100%"></center>
+
+    <!-- </center> -->
+    </div>
+</section>
+
+<!-- End image carousel -->
+<section class="section" id="Downloads">
+  <div class="container is-max-desktop content">
+  <h2 class="title">Downloads</h2>
+    <center>
+      <ul>
+        <li class="grid">
+          <div class="griditem">
+        <a href="https://arxiv.org/abs/2508.05630" target="_blank" class="imageLink"><img src="static/DemoImages/MOSEv2.png"></a><br><a href="https://arxiv.org/abs/2508.05630" target="_blank" class="imageLink">MOSEv2 Technical Report</a>
+        </div>
+          </li>
+        <li class="grid">
+          <div class="griditem">
+        <a href="https://arxiv.org/abs/2302.01872" target="_blank" class="imageLink"><img src="static/DemoImages/MOSE.png"></a><br><a href="https://arxiv.org/abs/2302.01872" class="imageLink">MOSEv1 Technical Report</a>
+        </div>
+          </li>
+          <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+
+        <li class="mygrid">
+          <div class="mygriditem">
+        <a href="https://github.com/henghuiding/MOSE-api" target="_blank" class="imageLink"><img src="static/DemoImages/dataset.png"></a><br><a href="https://github.com/henghuiding/MOSE-api" target="_blank">MOSEv1 Dataset</a>
+        </div>
+          </li>
+
+        <li class="mygrid">
+          <div class="mygriditem">
+        <a href="https://www.codabench.org/competitions/10062/" target="_blank" class="imageLink"><img src="static/DemoImages/dataset.png"></a><br><a href="https://www.codabench.org/competitions/10062/" target="_blank">🔥MOSEv2 Dataset (ready now!)</a>
+        </div>
+          </li>
+          <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+
+        <!-- <li li class="mygrid">
+          <div class="mygriditem">
+        <a href="" target="_blank" class="imageLink"><img src="static/DemoImages/codalab.png"></a><br><a href="https:" target="_blank">Online Evaluation (Coming soon)</a>
+        </div>
+          </li> -->
+
+        </ul><br><br>
+      
+    </center>
+    The dataset is avalibale on Hugging Face, OneDrive, Google Drive, and Baidu WangPan, please kindly refer to <a href="https://github.com/henghuiding/MOSE-api" target="_blank"><b>MOSE-api</b></a> for more details. <b>For MOSEv2, please register on <a href="https://www.codabench.org/competitions/10062/" target="_blank">Codabench</a> to access the download link.</b>
+    <pre><code><b>🚀 Download the dataset using <a href="https://pypi.org/project/gdown/" target="_blank">gdown</a> command:</b>
+📦 train.tar.gz 20.5 GB
+  gdown https://drive.google.com/uc\?id\=ID_removed_to_avoid_overaccesses_get_it_by_yourself
+📦 valid.tar.gz 3.61 GB
+  gdown https://drive.google.com/uc\?id\=ID_removed_to_avoid_overaccesses_get_it_by_yourself</code></pre>
+  <font color="#737373">Tips: gdown may be temporarily throttled by Google Drive due to excessive downloads, you may wait 24h or download from the Google Drive page with a google account. Please feel free to open an issue on <a href="https://github.com/henghuiding/MOSE-api/issues" target="_blank">MOSE-api</a>.</font>
+    </div>
+</section>
+
+<section class="section" id="Downloads">
+  <div class="container is-max-desktop content">
+  <h2 class="title">MOSE Evaluation</h2>
+    <center>
+        <li li class="mygrid">
+          <div class="mygriditem">
+        <a href="https://codalab.lisn.upsaclay.fr/competitions/10703" target="_blank" class="imageLink"><img src="static/DemoImages/codalab.png"></a><br><a href="https://codalab.lisn.upsaclay.fr/competitions/10703" target="_blank">MOSEv1 Online Evaluation</a>
+        </div>
+        </li>
+        <li li class="mygrid">
+          <div class="mygriditem">
+        <a href="https://www.codabench.org/competitions/10062/" target="_blank" class="imageLink"><img src="static/DemoImages/Codabench.png"></a><br><a href="https://www.codabench.org/competitions/10062/" target="_blank">MOSEv2 Online Evaluation (🔥ready now!)</a>
+        </div>
+        </li>
+    </center><br><br>
+
+    <font style="line-height:2;">
+    ● Following <a href="http://davischallenge.org/" target="_blank">DAVIS</a>, we use Region Jaccard <b><i>J</i></b>, Boundary F measure <b><i>F</i></b>, and their mean <b><i>J&F</i></b> as the evaluation metrics.<br>
+    ● For MOSEv2, a modified Boundary F measure (<b><i>F&#x0307</i></b>) is used, <b><i>J&F&#x0307<sub>d</sub></i></b> and <b><i>J&F&#x0307<sub>r</sub></i></b> are employed to evaluate the results on disapperance and reappearance clips, respectively. <br>
+
+    ● For the validation sets, the first-frame annotations are released to indicate the objects that are considered in evaluation. <br>
+
+    ● The validation set online evaluation server is <a href="https://codalab.lisn.upsaclay.fr/competitions/10703" target="_blank">[here for MOSEv1]</a> / <a href="https://www.codabench.org/competitions/10062/" target="_blank">[here for MOSEv2]</a> for daily evaluation. <br>
+
+    ● The test set online evaluation server will be open during the competition period only. <br>To ensure fair comparison among participants and avoid leaderboard overfitting through repeated trial-and-error, the test set is only available during official competition periods. Please note that for each competition, the released testing videos are randomly sampled from the test set, and will not remain the same across different competitions. This further ensures fairness and prevents overfitting to a fixed set.<br>
+
+    <!-- ● <font color="#FF6403">For urgent cases before online server is ready, you could send your predictions to us and we will return the <b><i>J&F</i></b> results to you.</font> -->
+    </font>
+  </div>
+</section>
+
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      Please consider to cite MOSE if it helps your research.
+      <pre><code>@article{MOSEv2,
+  title={{MOSEv2}: A More Challenging Dataset for Video Object Segmentation in Complex Scenes},
+  author={Ding, Henghui and Ying, Kaining and Liu, Chang and He, Shuting and Jiang, Xudong and Jiang, Yu-Gang and Torr, Philip HS and Bai, Song},
+  journal={arXiv preprint arXiv:2508.05630},
+  year={2025}
+}
+</code></pre>
+      <pre><code>@inproceedings{MOSE,
+  title={{MOSE}: A New Dataset for Video Object Segmentation in Complex Scenes},
+  author={Ding, Henghui and Liu, Chang and He, Shuting and Jiang, Xudong and Torr, Philip HS and Bai, Song},
+  booktitle={ICCV},
+  year={2023}
+}
+</code></pre>
+
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+<section class="section" id="License">
+  <div class="container is-max-desktop content">
+  <h2 class="title">License</h2>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"  target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></br>
+MOSE is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0 License</a>. The data of MOSE is released for non-commercial research purpose only.
+  <!-- </center> -->
+    </div>
+</section>
+
+
+<a href="https://clustrmaps.com/site/1bsv6" title="Visit tracker" target="_blank"><img src="//www.clustrmaps.com/map_v2.png?d=fiu-XVyK-5sfXg64QJNSVH52ERrgMlMTVeNpayx5wr0&cl=ffffff" height="1" width="1"/ style="display:block;margin-top:5px;margin-bottom:0px;margin-left:auto;text-align:right"></a>
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+
+            <center><font size=2>© Henghui Ding | FudanCVL | Last updated: 08/2025</font></center>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
